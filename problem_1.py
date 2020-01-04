@@ -14,7 +14,7 @@ import sys
 
 
 def multiples_of_3_and_5(start: int, stop: int) -> int:
-    """Sums all integers in an interval which are divisible by 3 and 5.
+    """Sums all integers from an interval which are divisible by 3 and 5.
 
     Sum all integers which are in the interval [start, stop) and are
     also divisible by 3 and 5.
@@ -32,7 +32,7 @@ def multiples_of_3_and_5(start: int, stop: int) -> int:
     return sum
 
 def main(num: int):
-    """Sums all natural numbers below num which are multiples of 3 or 5.
+    """Sums all integers below num which are multiples of 3 or 5.
 
     Args:
         num: The upper limit of the range of numbers to sum.
