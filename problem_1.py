@@ -20,8 +20,8 @@ def multiples_of_3_and_5(start: int, stop: int) -> int:
     also divisible by 3 and 5.
 
     Args:
-        start: The first number in the interval (inclusive)
-        stop: The last number in the interval (exclusive)
+        start: The first number in the interval (inclusive).
+        stop: The last number in the interval (exclusive).
 
     """
     sum = 0
