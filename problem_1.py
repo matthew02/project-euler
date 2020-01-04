@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-""" Problem 1 from Project Euler.
+"""Problem 1 from Project Euler.
 
 Sum all natural numbers below some number X which are multiples of 3 or 5.
 https://projecteuler.net/problem=1
@@ -14,7 +14,7 @@ import sys
 
 
 def multiples_of_3_and_5(start: int, stop: int) -> int:
-    """ Sum all integers in an interval which are divisible by 3 and 5.
+    """Sums all integers in an interval which are divisible by 3 and 5.
 
     Sum all integers which are in the interval [start, stop) and are
     also divisible by 3 and 5.
@@ -32,7 +32,7 @@ def multiples_of_3_and_5(start: int, stop: int) -> int:
     return sum
 
 def main(num: int):
-    """ Sum all natural numbers below num which are multiples of 3 or 5.
+    """Sums all natural numbers below num which are multiples of 3 or 5.
 
     Args:
         num: The upper limit of the range of numbers to sum.
