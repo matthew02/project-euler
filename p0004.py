@@ -7,7 +7,7 @@ Find the largest palindrome made from the product of two three-digit numbers.
 https://projecteuler.net/problem=4
 
 Usage:
-    python3 p0004.py [number]
+    python3 p0004.py
 """
 
 from typing import Iterator
