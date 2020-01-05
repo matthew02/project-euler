@@ -16,14 +16,6 @@ from math import sqrt
 from typing import Iterator
 
 
-def main(num: int):
-    """Prints the largest prime factor of a number.
-
-    Args:
-        num: The number to factor.
-    """
-    print(largest_prime_factor(num))
-
 def largest_prime_factor(num: int) -> int:
     """Finds the largest prime factor of a given number.
 
@@ -68,6 +60,14 @@ def generate_prime_numbers(start: int, stop: int) -> Iterator[int]:
     for num in range(2, stop + 1):
         if num >= start and is_prime[num]:
             yield num
+
+def main(num: int):
+    """Prints the largest prime factor of a number.
+
+    Args:
+        num: The number to factor.
+    """
+    print(largest_prime_factor(num))
 
 if __name__ == '__main__':
     main(int(sys.argv[1]))
