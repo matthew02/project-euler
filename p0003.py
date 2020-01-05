@@ -22,7 +22,8 @@ def largest_prime_factor(num: int) -> int:
     Args:
         num: The number to be factored.
 
-    Returns: The largest prime factor.
+    Returns:
+        The largest prime factor.
     """
     largest_prime = 0
 
@@ -36,17 +37,18 @@ def largest_prime_factor(num: int) -> int:
     return largest_prime
 
 def generate_prime_numbers(start: int, stop: int) -> Iterator[int]:
-    """Generate a list of prime numbers.
+    """Generates a list of prime numbers.
 
-    Generates a list of all prime numbers in the range start (inclusive) to
-    stop (inclusive) using the Sieve of Eratosthenes algorithm.
+    Finds all prime numbers in the closed interval from start to stop using
+    the Sieve of Eratosthenes algorithm.
     https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
 
     Args:
-        start: The lower bound of the integer sequence to search for primes.
-        stop: The upper bound of the integer sequence to search for primes.
+        start: The lower bound of the interval to search for primes.
+        stop: The upper bound of the interval to search for primes.
 
-    Returns: An iterator of all primes in the range [start: stop]
+    Yields:
+        An iterator of all primes found.
     """
     is_prime = [True for i in range(stop + 1)]
 
