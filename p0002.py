@@ -3,7 +3,7 @@
 
 """Problem 2 from Project Euler.
 
-Sum all even numbers below some number X in the Fibonacci sequence.
+Sum all even numbers from the Fibonacci sequence below a given number.
 https://projecteuler.net/problem=2
 
 Usage:
@@ -12,29 +12,43 @@ Usage:
 
 import sys
 
+from typing import Iterator
 
-def sum_even_fibonacci(stop: int) -> int:
-    """Sums all even integers in the Fibonacci sequence.
+def generate_fibonacci_sequence(stop: int) -> Iterator[int]:
+    """Generates the sequence of Fibonacci numbers.
 
-    Sum all even integers from the Fibonacci sequence which are below the
-    stop value.
+    Calculates the Fibonacci numbers below the stop value.
 
     Args:
-        stop: The upper limit of Fibonacci numbers at which to stop summing.
+        stop: The upper limit of numbers in the sequence.
+
+    Yields:
+        An iterator of all Fibonacci numbers calculated.
     """
-    sum = 0
     previous = 0
     current = 1
 
     while current < stop:
-        if not current % 2:
-            sum += current
+        yield current
         [previous, current] = [current, previous + current]
 
-    return sum
+def sum_even_fibonacci(stop: int) -> int:
+    """Sums all even integers in the Fibonacci sequence.
+
+    Sums all even numbers from the Fibonacci sequence which are below the
+    stop value.
+
+    Args:
+        stop: The upper limit of Fibonacci numbers at which to stop summing.
+
+    Returns:
+        The calculated sum.
+    """
+    sequence = generate_fibonacci_sequence(stop)
+    return sum(num for num in sequence if not num % 2)
 
 def main(num: int):
-    """Sums all even integers in the Fibonacci sequence below num.
+    """Prints the sums of all even numbers in the Fibonacci sequence below num.
 
     Args:
         num: The upper limit of fibonacci numbers at which to stop summing.
