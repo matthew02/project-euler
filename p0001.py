@@ -7,7 +7,7 @@ Sum all natural numbers below some number X which are multiples of 3 or 5.
 https://projecteuler.net/problem=1
 
 Usage:
-    python3 problem_1.py [number]
+    python3 p0001.py [number]
 """
 
 import sys
