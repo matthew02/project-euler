@@ -7,7 +7,7 @@ Sum all even numbers below some number X in the Fibonacci sequence.
 https://projecteuler.net/problem=2
 
 Usage:
-    python3 problem_2.py [number]
+    python3 p0002.py [number]
 """
 
 import sys
