@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-"""Problem 1 from Project Euler.
+"""Project Euler Problem 1 - Multiples of 3 and 5
 
-Sum all natural numbers below some number X which are multiples of 3 or 5.
+Sum all natural numbers below a given number which are multiples of 3 or 5.
 https://projecteuler.net/problem=1
 
 Usage:
