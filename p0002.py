@@ -14,45 +14,32 @@ import sys
 
 from typing import Iterator
 
-def generate_fibonacci_sequence(stop: int) -> Iterator[int]:
-    """Generates the sequence of Fibonacci numbers.
+def generate_fibonacci_sequence() -> Iterator[int]:
+    """Generates the sequence of Fibonacci numbers."""
+    a, b = 0, 1
 
-    Calculates the Fibonacci numbers below the stop value.
-
-    Args:
-        stop: The upper limit of numbers in the sequence.
-
-    Yields:
-        An iterator of all Fibonacci numbers calculated.
-    """
-    previous = 0
-    current = 1
-
-    while current < stop:
-        yield current
-        [previous, current] = [current, previous + current]
+    while True:
+        yield a
+        b = a + b
+        yield b
+        a = a + b
 
 def sum_even_fibonacci(stop: int) -> int:
-    """Sums all even integers in the Fibonacci sequence.
+    """Sums all even integers in the Fibonacci sequence up to stop."""
+    result = 0
 
-    Sums all even numbers from the Fibonacci sequence which are below the
-    stop value.
+    fib = generate_fibonacci_sequence()
+    num = next(fib)
 
-    Args:
-        stop: The upper limit of Fibonacci numbers at which to stop summing.
+    while num < stop:
+        if num % 2 == 0:
+            result += num
+        num = next(fib)
 
-    Returns:
-        The calculated sum.
-    """
-    sequence = generate_fibonacci_sequence(stop)
-    return sum(num for num in sequence if not num % 2)
+    return result
 
 def main(num: int):
-    """Prints the sums of all even numbers in the Fibonacci sequence below num.
-
-    Args:
-        num: The upper limit of fibonacci numbers at which to stop summing.
-    """
+    """Prints the result."""
     print(sum_even_fibonacci(num))
 
 if __name__ == '__main__':
