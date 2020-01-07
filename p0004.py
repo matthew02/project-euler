@@ -10,15 +10,20 @@ Usage:
     python3 p0004.py
 """
 
+import sys
+
 from typing import Iterator
 
 
-def largest_palindrome_product() -> int:
-    """Finds the largest palindromic product of two three-digit numbers."""
+def largest_palindrome_product(num: int) -> int:
+    """Finds the largest palindromic product of two num-digit numbers."""
     palindromes = list()
 
-    for i in range(100, 1000):
-        for j in range(i, 1000):
+    start = 10 ** (num - 1)
+    stop = 10 ** num
+    print(f'start = {start}, stop = {stop}')
+    for i in range(start, stop):
+        for j in range(i, stop):
             product = i * j
             if is_palindrome(product):
                 palindromes.append(product)
@@ -29,9 +34,9 @@ def is_palindrome(num: int) -> bool:
     """Checks if a number is a palindrome."""
     return str(num) == str(num)[::-1]
 
-def main():
+def main(num: int):
     """Prints the solution."""
-    print(largest_palindrome_product())
+    print(largest_palindrome_product(int(num)))
 
 if __name__ == '__main__':
-    main()
+    main(sys.argv[1])
