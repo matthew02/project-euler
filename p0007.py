@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-"""Problem 3 from Project Euler.
+"""Problem 7 from Project Euler.
 
-Find the largest prime factor of a given number.
-https://projecteuler.net/problem=3
+Find the nth prime number.
+https://projecteuler.net/problem=7
 
 Usage:
-    python3 p0003.py [number]
+    python3 p0007.py [number]
 """
 
 import sys
