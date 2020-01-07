@@ -16,19 +16,11 @@ import sys
 
 from typing import List
 
-from primes import decompose
-
 def smallest_multiple(numbers: List) -> int:
     """Finds the smallest integer multiple of a list of numbers.
 
     Calculates the smallest number that is evenly divisible by all numbers in
     given list, also known as the least common multiple.
-
-    Args:
-        numbers: The list of numbers to compute.
-
-    Returns:
-        The least common multiple.
     """
     result = 1
     for num in numbers:
@@ -36,14 +28,7 @@ def smallest_multiple(numbers: List) -> int:
     return result
 
 def main(stop: int):
-    """Prints the smallest common factor in a sequence of numbers.
-
-    Prints the smallest common factor in a sequence of numbers from one to
-    stop.
-
-    Args:
-        stop: The upper bound of the sequence.
-    """
+    """Prints the result."""
     print(smallest_multiple([*range(1, stop)]))
 
 if __name__ == '__main__':
