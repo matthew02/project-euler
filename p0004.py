@@ -14,15 +14,11 @@ from typing import Iterator
 
 
 def largest_palindrome_product() -> int:
-    """Finds the largest palindromic product of two three-digit numbers.
-
-    Returns:
-        The largest product.
-    """
+    """Finds the largest palindromic product of two three-digit numbers."""
     return max(generate_palindromes())
 
 def generate_palindromes() -> Iterator[int]:
-    """Generates a list of palindromes.
+    """Generates a list of palindromic numbers.
 
     Finds all numbers which are the product of two three-digit numbers and
     are palindromes.
@@ -37,7 +33,7 @@ def generate_palindromes() -> Iterator[int]:
                 yield product
 
 def main():
-    """Prints the largest palindromic product of two three-digit numbers."""
+    """Prints the solution."""
     print(largest_palindrome_product())
 
 if __name__ == '__main__':
