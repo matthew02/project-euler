@@ -14,29 +14,16 @@ import sys
 
 
 def multiples_of_3_and_5(start: int, stop: int) -> int:
-    """Sums all integers divisible by 3 and 5.
-
-    Sum all integers which are in the closed interval from start to stop and
-    are also divisible by 3 and 5.
-
-    Args:
-        start: The first number in the interval (inclusive).
-        stop: The last number in the interval (inclusive).
-
-    """
+    """Sums all integers divisible by 3 and 5 in the range start to stop."""
     sum = 0
-    for number in range(start, stop):
-        if not number % 3 or not number % 5:
-            sum += number
+    for num in range(start, stop):
+        if not num % 3 or not num % 5:
+            sum += num
 
     return sum
 
 def main(num: int):
-    """Prints the sum of all integers below num which are multiples of 3 or 5.
-
-    Args:
-        num: The upper limit of the range of numbers to sum.
-    """
+    """Prints the solution."""
     print(multiples_of_3_and_5(0, num))
 
 if __name__ == '__main__':
