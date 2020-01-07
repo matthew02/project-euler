@@ -15,22 +15,19 @@ from typing import Iterator
 
 def largest_palindrome_product() -> int:
     """Finds the largest palindromic product of two three-digit numbers."""
-    return max(generate_palindromes())
+    palindromes = list()
 
-def generate_palindromes() -> Iterator[int]:
-    """Generates a list of palindromic numbers.
-
-    Finds all numbers which are the product of two three-digit numbers and
-    are palindromes.
-
-    Yields:
-        An iterator of all palindromes found.
-    """
     for i in range(100, 1000):
         for j in range(i, 1000):
             product = i * j
-            if str(product) == str(product)[::-1]:
-                yield product
+            if is_palindrome(product):
+                palindromes.append(product)
+
+    return max(palindromes)
+
+def is_palindrome(num: int) -> bool:
+    """Checks if a number is a palindrome."""
+    return str(num) == str(num)[::-1]
 
 def main():
     """Prints the solution."""
