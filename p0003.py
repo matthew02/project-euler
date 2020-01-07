@@ -15,17 +15,22 @@ import sys
 from typing import Iterator
 
 
-def generate_primes(stop: int) -> Iterator[int]:
-    """Generates a sequence of prime numbers up to stop."""
-    primes = set()
-    for num in range(2, stop + 1):
-        if all(num % prime > 0 for prime in primes):
+def generate_primes() -> Iterator[int]:
+    """Generates the sequence of prime numbers."""
+    num = 2
+    yield num
+
+    primes = set({2})
+
+    while True:
+        num += 1
+        if num % 2 > 0 and all(num % prime > 0 for prime in primes):
             primes.add(num)
             yield num
 
 def decompose(num: int) -> Iterator[int]:
     """Decomposes a number into its prime factors."""
-    primes = generate_primes(num)
+    primes = generate_primes()
 
     for prime in primes:
         if prime > num:
