@@ -14,28 +14,36 @@ import sys
 
 from typing import Iterator
 
-from primes import decompose
 
+def generate_primes(stop: int) -> Iterator[int]:
+    """Generates a sequence of prime numbers up to stop."""
+    primes = set()
+    for num in range(2, stop + 1):
+        if all(num % prime > 0 for prime in primes):
+            primes.add(num)
+            yield num
+
+def decompose(num: int) -> Iterator[int]:
+    """Decomposes a number into its prime factors."""
+    primes = generate_primes(num)
+
+    for prime in primes:
+        if prime > num:
+            break
+
+        while num % prime == 0:
+            yield prime
+            num = num // prime
 
 def largest_prime_factor(num: int) -> int:
-    """Finds the largest prime factor of a given number.
-
-    Args:
-        num: The number to be factored.
-
-    Returns:
-        The largest prime factor.
-    """
+    """Finds the largest prime factor of a given number."""
     *_, largest = decompose(num)
     return largest
 
 def main(num: int):
-    """Prints the largest prime factor of a number.
-
-    Args:
-        num: The number to factor.
-    """
+    """Prints the solution."""
     print(largest_prime_factor(num))
 
 if __name__ == '__main__':
     main(int(sys.argv[1]))
+
