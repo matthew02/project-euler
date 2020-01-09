@@ -17,17 +17,17 @@ from typing import Iterator
 
 def largest_palindrome_product(n: int) -> int:
     """Finds the largest palindromic product of two n-digit numbers."""
-    palindromes = list()
+    largest = 0
 
     start = 10 ** (n - 1)
     stop = 10 ** n
-    for i in range(start, 2000):
-        for j in range(i, 2000):
+    for i in range(stop, start, -1):
+        for j in range(i, start, -1):
             product = i * j
-            if is_palindrome(product):
-                palindromes.append(product)
+            if product > largest and is_palindrome(product):
+                largest = product
 
-    return max(palindromes)
+    return largest
 
 def is_palindrome(num: int) -> bool:
     """Checks if a number is a palindrome."""
@@ -35,7 +35,7 @@ def is_palindrome(num: int) -> bool:
 
 def main(num: int):
     """Prints the solution."""
-    print(largest_palindrome_product(int(num)))
+    print(largest_palindrome_product(num))
 
 if __name__ == '__main__':
-    main(sys.argv[1])
+    main(int(sys.argv[1]))
