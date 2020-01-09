@@ -40,7 +40,7 @@ def get_nth_prime(n: int) -> int:
 
 def main(num: int):
     """Prints the solution."""
-    print(get_nth_prime(int(num)))
+    print(get_nth_prime(num))
 
 if __name__ == '__main__':
     main(int(sys.argv[1]))
