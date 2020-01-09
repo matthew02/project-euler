@@ -15,15 +15,14 @@ import sys
 from typing import Iterator
 
 
-def largest_palindrome_product(num: int) -> int:
-    """Finds the largest palindromic product of two num-digit numbers."""
+def largest_palindrome_product(n: int) -> int:
+    """Finds the largest palindromic product of two n-digit numbers."""
     palindromes = list()
 
-    start = 10 ** (num - 1)
-    stop = 10 ** num
-    print(f'start = {start}, stop = {stop}')
-    for i in range(start, stop):
-        for j in range(i, stop):
+    start = 10 ** (n - 1)
+    stop = 10 ** n
+    for i in range(start, 2000):
+        for j in range(i, 2000):
             product = i * j
             if is_palindrome(product):
                 palindromes.append(product)
