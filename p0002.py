@@ -26,16 +26,16 @@ def generate_fibonacci_sequence() -> Iterator[int]:
 
 def sum_even_fibonacci(stop: int) -> int:
     """Sums all even integers in the Fibonacci sequence up to stop."""
-    result = 0
+    result, current = 0, 0
 
     fib = generate_fibonacci_sequence()
-    num = next(fib)
 
-    while num < stop:
-        if num % 2 == 0:
-            result += num
-        num = next(fib)
-
+    while current < stop:
+        result += current
+        current = next(fib)
+        # Only every third number is even, so skip two
+        next(fib)
+        next(fib)
     return result
 
 def main(num: int):
