@@ -24,7 +24,6 @@ def smallest_multiple(numbers: List) -> int:
     """
     result = 1
     for num in numbers:
-        #print(f'num = {num}, result = {result}')
         result *= num // math.gcd(num, result)
     return result
 
