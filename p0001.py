@@ -12,15 +12,21 @@ Usage:
 
 import sys
 
+from typing import List
+
 
 def multiples_of_3_and_5(start: int, stop: int) -> int:
     """Sums all integers divisible by 3 and 5 in the range start to stop."""
-    sum = 0
-    for num in range(start, stop):
-        if not num % 3 or not num % 5:
-            sum += num
+    numbers = set()
+    numbers.update(get_all_divisible_by(start, stop, 3))
+    numbers.update(get_all_divisible_by(start, stop, 5))
+    return sum(list(numbers))
 
-    return sum
+def get_all_divisible_by(start: int, stop: int, n: int) -> List:
+    """Gets all numbers between start and stop which are divisible by n."""
+    while start % n:
+        start += 1
+    return [*range(start, stop, n)]
 
 def main(num: int):
     """Prints the solution."""
