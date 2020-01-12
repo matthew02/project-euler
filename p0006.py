@@ -14,22 +14,22 @@ Usage:
 import sys
 
 
-def sum_first_n(n: int) -> float:
+def sum_first_n(n: int) -> int:
     """Finds the sum of the integers from 1 to n."""
-    return n * (n + 1) / 2
+    return n * (n + 1) // 2
 
-def sum_first_n_squares(n: int) -> float:
+def sum_first_n_squares(n: int) -> int:
     """Finds the sum of the squares of the integers from 1 to n."""
-    return n * (n + 1) * (2 * n + 1) / 6
+    return n * (n + 1) * (2 * n + 1) // 6
 
-def sum_square_difference(n: int) -> float:
+def sum_square_difference(n: int) -> int:
     """Finds the difference of the sum of the squares of the first n numbers
     and the square of the sum of the first n numbers."""
     return sum_first_n(n) ** 2 - sum_first_n_squares(n)
 
 def main(n: int):
     """Prints the solution."""
-    print(int(sum_square_difference(n)))
+    print(sum_square_difference(n))
 
 if __name__ == '__main__':
     main(int(sys.argv[1]))
