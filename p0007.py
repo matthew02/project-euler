@@ -12,6 +12,9 @@ Usage:
 
 import sys
 
+from euler import *
+
+
 def is_prime(num: int) -> bool:
     """Checks a number for primality."""
     if num <= 1:
@@ -20,7 +23,7 @@ def is_prime(num: int) -> bool:
         return True
     if num % 2 == 0:
         return False
-    for divisor in range(3, int(num ** 0.5) + 1, 2):
+    for divisor in range(3, sqrt(num) + 1, 2):
         if num % divisor == 0:
             return False
     return True
