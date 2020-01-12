@@ -26,7 +26,7 @@ def get_all_divisible_by(start: int, stop: int, n: int) -> List:
     """Gets all numbers between start and stop which are divisible by n."""
     while start % n:
         start += 1
-    return [*range(start, stop, n)]
+    return range(start, stop, n)
 
 def main(num: int):
     """Prints the solution."""
