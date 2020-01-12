@@ -16,7 +16,7 @@ import sys
 
 from typing import List
 
-def smallest_multiple(numbers: List) -> int:
+def smallest_multiple(numbers: List[int]) -> int:
     """Finds the smallest integer multiple of a list of numbers.
 
     Calculates the smallest number that is evenly divisible by all numbers in
