@@ -22,7 +22,7 @@ def multiples_of_3_and_5(start: int, stop: int) -> int:
     numbers.update(get_all_divisible_by(start, stop, 5))
     return sum(list(numbers))
 
-def get_all_divisible_by(start: int, stop: int, n: int) -> List:
+def get_all_divisible_by(start: int, stop: int, n: int) -> List[int]:
     """Gets all numbers between start and stop which are divisible by n."""
     while start % n:
         start += 1
