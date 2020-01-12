@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-"""Problem 7 from Project Euler.
+"""Problem 9 from Project Euler: Special Pythagorean triplet
 
-Find the nth prime number.
+A Pythagorean triplet is a set of three natural numbers, a < b < c, for which
+a^2 + b^2 = c^2
+
+Find a Pythagorean triplet for which a + b + c is equal to a given number n
+and return the product abc.
 https://projecteuler.net/problem=7
 
 Usage:
-    python3 p0007.py [number]
+    python3 p0009.py [number]
 """
 
 import sys
