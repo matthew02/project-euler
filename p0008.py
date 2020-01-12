@@ -14,18 +14,19 @@ Usage:
     without newline characters
 """
 
-import numpy
 import sys
 
 from typing import List
 
+import euler
 
-def largest_product_in_a_series(sequence: List, n: int) -> int:
+
+def largest_product_in_a_series(sequence: List[int], n: int) -> int:
     """Finds the largest product of n consecutive numbers in sequence."""
     largest = 0
     for start in range(len(sequence) - n):
         stop = start + n
-        largest = max(largest, numpy.prod(sequence[start:stop]))
+        largest = max(largest, product(sequence[start:stop]))
     return largest
 
 def main(fname: str, length: int):
