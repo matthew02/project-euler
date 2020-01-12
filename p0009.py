@@ -8,7 +8,7 @@ a^2 + b^2 = c^2
 
 Find a Pythagorean triplet for which a + b + c is equal to a given number n
 and return the product abc.
-https://projecteuler.net/problem=7
+https://projecteuler.net/problem=9
 
 Usage:
     python3 p0009.py [number]
