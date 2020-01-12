@@ -42,6 +42,13 @@ def get_dicksons_triplets(stop: int) -> Iterator[List[int]]:
         for s, t in get_factor_pairs(r ** 2 // 2):
             yield [r + s, r + t, r + s + t]
 
+def get_factor_pairs(x: int) -> Iterator[List[int]]:
+    """Generates a the factor pairs of an integer."""
+    stop = int(sqrt(x)) + 1
+    for i in range(1, stop):
+        if x % i == 0:
+            yield [i, x // i]
+
 def main(num: int):
     """Prints the solution."""
     triplet = special_pythagorean_triplet(num)
