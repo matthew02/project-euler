@@ -12,15 +12,14 @@ Usage:
 
 import sys
 
-from euler import *
+from itertools import takewhile
 
+from euler import get_primes
 
-def summation_of_primes(stop: int) -> int:
-    return sum(p for p in range(2, stop) if is_prime(p))
 
 def main(num: int):
     """Prints the solution."""
-    print(summation_of_primes(num))
+    return sum(takewhile(lambda x: x < num, get_primes()))
 
 if __name__ == '__main__':
     main(int(sys.argv[1]))
