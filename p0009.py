@@ -18,16 +18,16 @@ import sys
 
 from typing import Iterator, List
 
-from euler import *
+from euler import sqrt
 
 
 def special_pythagorean_triplet(n: int) -> List[int]:
     """Finds a Pythagorean triplet whose sum is equal to n."""
-    for a, b, c in get_dicksons_triplets(n):
+    for a, b, c in get_pythagorean_triplets(n):
         if a + b + c == n:
             return [a, b, c]
 
-def get_dicksons_triplets(stop: int) -> Iterator[List[int]]:
+def get_pythagorean_triplets(stop: int) -> Iterator[List[int]]:
     """Generates Pythagorean triplets.
 
     Uses Dickson's method, for all values of r from 1 to stop.
@@ -55,7 +55,6 @@ def main(num: int):
     if triplet == None:
         print('None found.')
     else:
-        #print(triplet)
         print(product(triplet))
 
 if __name__ == '__main__':
