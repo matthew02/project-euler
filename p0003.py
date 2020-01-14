@@ -15,26 +15,27 @@ import sys
 from typing import Iterator
 
 
-def generate_primes() -> Iterator[int]:
-    """Generates the sequence of prime numbers."""
-    num = 2
-    yield num
-
-    primes = set({2})
-
+def get_primes() -> Iterator[int]:
+    """Generates the prime number sequence"""
+    yield 2
+    prime_multiples = {}
+    num = 3
     while True:
-        num += 1
-        if num % 2 > 0 and all(num % prime > 0 for prime in primes):
-            primes.add(num)
+        if num not in prime_multiples:
             yield num
+            prime_multiples[num * num] = [2 * num]
+        else:
+            for multiple in prime_multiples[num]:
+                prime_multiples.setdefault(multiple + num, []).append(multiple)
+            del prime_multiples[num]
+        num += 2
 
 def decompose(num: int) -> Iterator[int]:
     """Decomposes a number into its prime factors."""
-    primes = generate_primes()
+    prime, primes = 2, get_primes()
 
-    for prime in primes:
-        if prime > num:
-            break
+    while prime <= num:
+        prime = next(primes)
 
         while num % prime == 0:
             yield prime
