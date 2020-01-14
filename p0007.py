@@ -13,13 +13,10 @@ Usage:
 import sys
 
 from itertools import islice
+from typing import Iterator
 
-from euler import *
+from euler import get_primes
 
-
-def get_nth_prime(n: int) -> int:
-    """Returns the nth prime number"""
-    return nth(get_primes(), n)
 
 def nth(iterable: Iterator, n: int):
     """Returns the nth item or raise StopIteration."""
@@ -27,7 +24,7 @@ def nth(iterable: Iterator, n: int):
 
 def main(num: int):
     """Prints the solution."""
-    print(get_nth_prime(num))
+    print(nth(get_primes(), num))
 
 if __name__ == '__main__':
     main(int(sys.argv[1]))
