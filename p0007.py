@@ -12,34 +12,18 @@ Usage:
 
 import sys
 
+from itertools import islice
+
 from euler import *
 
 
-def is_prime(num: int) -> bool:
-    """Checks a number for primality."""
-    if num <= 1:
-        return False
-    if num <= 3:
-        return True
-    if num % 2 == 0:
-        return False
-    for divisor in range(3, sqrt(num) + 1, 2):
-        if num % divisor == 0:
-            return False
-    return True
-
 def get_nth_prime(n: int) -> int:
-    """Finds the nth prime number."""
-    current, count = 2, 1
-    while True:
-        if count == n:
-            return current
-        count += 1
+    """Returns the nth prime number"""
+    return nth(get_primes(), n)
 
-        while True:
-            current += 1
-            if is_prime(current):
-                break
+def nth(iterable: Iterator, n: int):
+    """Returns the nth item or raise StopIteration."""
+    return next(islice(iterable, n - 1, None))
 
 def main(num: int):
     """Prints the solution."""
