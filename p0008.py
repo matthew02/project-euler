@@ -18,7 +18,7 @@ import sys
 
 from typing import List
 
-from euler import *
+from euler import product
 
 
 def largest_product_in_a_series(sequence: List[int], n: int) -> int:
