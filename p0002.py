@@ -12,9 +12,11 @@ Usage:
 
 import sys
 
+from itertools import islice, takewhile
 from typing import Iterator
 
-def generate_fibonacci_sequence() -> Iterator[int]:
+
+def get_fibonacci() -> Iterator[int]:
     """Generates the sequence of Fibonacci numbers."""
     a, b = 0, 1
 
@@ -26,17 +28,8 @@ def generate_fibonacci_sequence() -> Iterator[int]:
 
 def sum_even_fibonacci(stop: int) -> int:
     """Sums all even integers in the Fibonacci sequence up to stop."""
-    result, current = 0, 0
-
-    fib = generate_fibonacci_sequence()
-
-    while current < stop:
-        result += current
-        current = next(fib)
-        # Only every third number is even, so skip two
-        next(fib)
-        next(fib)
-    return result
+    every_third_fib = islice(get_fibonacci(), 3, None, 3)
+    return sum(takewhile(lambda x: x < stop, every_third))
 
 def main(num: int):
     """Prints the result."""
@@ -44,4 +37,3 @@ def main(num: int):
 
 if __name__ == '__main__':
     main(int(sys.argv[1]))
-
