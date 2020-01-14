@@ -3,22 +3,10 @@
 """A library of helper functions for solving the problems at ProjectEuler.net"""
 
 from functools import reduce
+from itertools import islice
 from operator import mul, add
 from typing import Iterator, List
 
-
-def get_primes() -> Iterator[int]:
-    """Generates the sequence of prime numbers."""
-    num = 2
-    yield num
-
-    primes = set({2})
-
-    while True:
-        num += 1
-        if num % 2 > 0 and all(num % prime > 0 for prime in primes):
-            primes.add(num)
-            yield num
 
 def is_prime(num: int) -> bool:
     """Checks a number for primality."""
@@ -32,6 +20,27 @@ def is_prime(num: int) -> bool:
         if num % divisor == 0:
             return False
     return True
+
+def get_primes() -> Iterator[int]:
+    """Generates the prime number sequence."""
+    yield 2
+    prime_multiples = {}
+    num = 3
+    while True:
+        if num not in prime_multiples:
+            yield num
+            prime_multiples[num * num] = [2 * num]
+        else:
+            for multiple in prime_multiples[num]:
+                prime_multiples.setdefault(multiple + num, []).append(multiple)
+                #print(f'multiple = {multiple}, prime_multiples = {prime_multiples}')
+            del prime_multiples[num]
+        #print(f'num = {num}, prime_multiples = {D}')
+        num += 2
+
+def nth(iterable: Iterator, n: int):
+    """Returns the nth item of an iterator  or raise StopIteration."""
+    return next(islice(iterable, n - 1, None))
 
 def product(numbers: List[int]) -> int:
     """Gets the product of all numbers in a list."""
