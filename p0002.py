@@ -16,7 +16,7 @@ from itertools import islice, takewhile
 from typing import Iterator
 
 
-def get_fibonacci() -> Iterator[int]:
+def fibonacci() -> Iterator[int]:
     """Generates the sequence of Fibonacci numbers."""
     a, b = 0, 1
 
@@ -28,7 +28,7 @@ def get_fibonacci() -> Iterator[int]:
 
 def sum_even_fibonacci(stop: int) -> int:
     """Sums all even integers in the Fibonacci sequence up to stop."""
-    every_third_fib = islice(get_fibonacci(), 3, None, 3)
+    every_third_fib = islice(fibonacci(), 3, None, 3)
     return sum(takewhile(lambda x: x < stop, every_third))
 
 def main(num: int):
