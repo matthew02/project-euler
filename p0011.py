@@ -11,6 +11,7 @@ Usage:
     python3 p0011.py [filename] [number]
 """
 
+import numpy
 import sys
 
 from typing import List
@@ -61,16 +62,10 @@ def product(grid: List[List[int]], start: List[int], direction: List[int], num: 
 
     return prod
 
-def load_grid_file(fname: str) -> List[List[int]]:
-    """Loads a grid of numbers from a file where columns are delimited by
-    spaces and rows are delimited by newlines."""
-    with open (fname, 'r') as myfile:
-        data = [[*map(int, line.split(' '))] for line in myfile]
-    return data
-
 def main(fname: str, num: int):
     """Prints the solution."""
-    print(largest_product_in_a_grid(load_grid_file(fname), num))
+    grid = numpy.loadtxt(fname, int, '#', ' ')
+    print(largest_product_in_a_grid(grid, num))
 
 if __name__ == '__main__':
     main(sys.argv[1], int(sys.argv[2]))
