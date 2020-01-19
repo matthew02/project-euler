@@ -34,26 +34,27 @@ def largest_product_in_a_grid(grid: List[List[int]], num: int) -> int:
 
 def product(grid: List[List[int]], start: List[int], direction: List[int], num: int):
     """Calculate the product of a sequence of numbers in a grid.
-    
+
     Args:
         grid: A square or rectangular two-dimensional list of numbers.
         start: The coordinates of the first number in the sequence.
         direction: A vector indicating the direction of the subsequent numbers.
         num: The quantity of numbers to choose from the grid.
-    
+
     Returns:
         The product of all numbers chosen from the grid or 0 if the movement
-        would overflows the grid boundaries.
+        would overflow the grid boundaries.
     """
     x, y = start
-    height = len(grid) - 1
-    width = len(grid[0]) - 1
+
+    w, h = len(grid[0]) - 1, len(grid) - 1
+    end_x, end_y = x + num * direction[0], y + num * direction[1]
+    if x < 0 or end_x < 0 or x > w or end_x > w or\
+       y < 0 or end_y < 0 or y > h or end_y > h:
+        return 0
 
     prod = 1
-
     for _ in range(num):
-        if x < 0 or x > width or y < 0 or y > height:
-            return 0
         prod *= grid[y][x]
         x += direction[0]
         y += direction[1]
@@ -61,7 +62,8 @@ def product(grid: List[List[int]], start: List[int], direction: List[int], num: 
     return prod
 
 def load_grid_file(fname: str) -> List[List[int]]:
-    """Loads the grid from a file."""
+    """Loads a grid of numbers from a file where columns are delimited by
+    spaces and rows are delimited by newlines."""
     with open (fname, 'r') as myfile:
         data = [[*map(int, line.split(' '))] for line in myfile]
     return data
