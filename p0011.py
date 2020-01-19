@@ -33,7 +33,7 @@ def largest_product_in_a_grid(grid: List[List[int]], num: int) -> int:
 
     return largest
 
-def product(grid: List[List[int]], start: List[int], direction: List[int], num: int):
+def product(grid: List[List[int]], start: List[int], direction: List[int], num: int) -> int:
     """Calculate the product of a sequence of numbers in a grid.
 
     Args:
