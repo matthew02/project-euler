@@ -16,6 +16,7 @@ Usage:
 
 import sys
 
+from math import prod
 from typing import Iterator, List
 
 from euler import sqrt
@@ -51,11 +52,11 @@ def get_factor_pairs(x: int) -> Iterator[List[int]]:
 
 def main(num: int):
     """Prints the solution."""
-    triplet = special_pythagorean_triplet(num)
-    if triplet == None:
-        print('None found.')
-    else:
-        print(product(triplet))
+    try:
+        print(prod(special_pythagorean_triplet(num)))
+
+    except TypeError:
+        print('None found')
 
 if __name__ == '__main__':
     main(int(sys.argv[1]))
