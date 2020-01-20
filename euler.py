@@ -42,10 +42,6 @@ def nth(iterable: Iterator, n: int):
     """Returns the nth item of an iterator  or raise StopIteration."""
     return next(islice(iterable, n - 1, None))
 
-def product(numbers: List[int]) -> int:
-    """Gets the product of all numbers in a list."""
-    return reduce(mul, numbers, 1)
-
 def sqrt(n: int) -> float:
     """Gets the integer square root of an integer, rounded toward zero."""
     return int(n ** 0.5)
