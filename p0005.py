@@ -8,12 +8,12 @@ numbers from 1 to 20.
 https://projecteuler.net/problem=5
 
 Usage:
-    python3 p0005.py
+    python3 p0005.py [number]
 """
 
-import math
 import sys
 
+from math import gcd
 from typing import List
 
 def smallest_multiple(numbers: List[int]) -> int:
@@ -24,7 +24,7 @@ def smallest_multiple(numbers: List[int]) -> int:
     """
     result = 1
     for num in numbers:
-        result *= num // math.gcd(num, result)
+        result *= num // gcd(num, result)
     return result
 
 def main(stop: int):
