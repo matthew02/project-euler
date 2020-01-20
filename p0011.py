@@ -16,7 +16,7 @@ import sys
 
 from itertools import count, islice
 from math import prod
-from typing import List
+from typing import List, Tuple
 
 
 def largest_product_in_a_grid(grid: List[List[int]], num: int) -> int:
@@ -26,7 +26,7 @@ def largest_product_in_a_grid(grid: List[List[int]], num: int) -> int:
 
     for y in range(len(grid)):
         for x in range(len(grid[0])):
-            product = lambda dx, dy: grid_product(grid, [x, y], [dx, dy], num)
+            product = lambda dx, dy: grid_product(grid, (x, y), (dx, dy), num)
             largest = max([largest,
                            product(1, 0),      # Horizontal
                            product(0, 1),      # Vertical
@@ -35,7 +35,7 @@ def largest_product_in_a_grid(grid: List[List[int]], num: int) -> int:
 
     return largest
 
-def grid_product(grid: List[List[int]], start: List[int], direction: List[int], num: int) -> int:
+def grid_product(grid: List[List[int]], start: Tuple[int], direction: Tuple[int], num: int) -> int:
     """Calculate the product of a sequence of numbers in a grid.
 
     Args:
@@ -52,22 +52,11 @@ def grid_product(grid: List[List[int]], start: List[int], direction: List[int], 
     dx, dy = direction
 
     try:
-        # Make sure the sequence doesn't start or end to the left or above the grid
+        # Ensure the sequence doesn't start or end below a zero index
         if x < 0 or y < 0 or x + num * dx < 0 or y + num * dy < 0:
             raise IndexError
 
-        #product = 1
-        #for _ in range(num):
-        #    product *= grid[y][x]
-        #    x += dx
-        #    y += dy
-        #return product
-
         return prod(grid[y + dy * i][x + dx * i] for i in range(num))
-
-        #x_coords = islice(count(x, direction[0]), 0, num)
-        #y_coords = islice(count(y, direction[1]), 0, num)
-        #return prod(grid[dy][dx] for dx, dy in zip(x_coords, y_coords))
 
     except IndexError:
         return 0
