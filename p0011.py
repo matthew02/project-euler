@@ -12,8 +12,12 @@ Usage:
 """
 
 import numpy
+import operator
 import sys
 
+from functools import reduce
+from itertools import accumulate, count, islice, repeat, takewhile
+from math import prod
 from typing import List
 
 
@@ -54,13 +58,20 @@ def product(grid: List[List[int]], start: List[int], direction: List[int], num: 
        y < 0 or end_y < 0 or y > h or end_y > h:
         return 0
 
-    prod = 1
-    for _ in range(num):
-        prod *= grid[y][x]
-        x += direction[0]
-        y += direction[1]
+    #prod = 1
+    #dx, dy = direction
+    #for _ in range(num):
+    #    prod *= grid[y][x]
+    #    x += dx
+    #    y += dy
+    #return prod
 
-    return prod
+    dx, dy = direction
+    return product(grid[y + dy * i][x + dx * i] for i in range(num))
+
+    #x_coords = islice(count(x, direction[0]), 0, num)
+    #y_coords = islice(count(y, direction[1]), 0, num)
+    #return prod(grid[dy][dx] for dx, dy in zip(x_coords, y_coords))
 
 def main(fname: str, num: int):
     """Prints the solution."""
