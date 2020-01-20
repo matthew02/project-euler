@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 """Problem 11 from Project Euler: Largest product in a grid
 
