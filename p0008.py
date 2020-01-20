@@ -16,9 +16,8 @@ Usage:
 
 import sys
 
+from math import prod
 from typing import List
-
-from euler import product
 
 
 def largest_product_in_a_series(sequence: List[int], n: int) -> int:
@@ -26,7 +25,7 @@ def largest_product_in_a_series(sequence: List[int], n: int) -> int:
     largest = 0
     for start in range(len(sequence) - n):
         stop = start + n
-        largest = max(largest, product(sequence[start:stop]))
+        largest = max(largest, prod(sequence[start:stop]))
     return largest
 
 def main(fname: str, length: int):
