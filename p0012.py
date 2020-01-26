@@ -8,12 +8,11 @@ Usage:
     python3 p0012.py [number]
 """
 
-import itertools
 import sys
 
 
 from collections import Counter as counter
-from itertools import accumulate, count
+from itertools import accumulate, count, takewhile
 from math import prod
 from typing import Iterator
 
