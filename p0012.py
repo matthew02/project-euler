@@ -30,9 +30,9 @@ def triangle_numbers() -> Iterator:
     return accumulate(count())
 
 def euler12(num: int) -> int:
-    """Calculates the first triangle number to have num or more divisors."""
+    """Calculates the first triangle number to have more than num divisors."""
     for t in triangle_numbers():
-        if count_factors(t) >= num:
+        if count_factors(t) > num:
             return t
 
 def main(num: str):
