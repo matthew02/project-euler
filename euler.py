@@ -8,18 +8,16 @@ from operator import mul, add
 from typing import Iterator, List
 
 
-def is_prime(num: int) -> bool:
-    """Checks a number for primality."""
-    if num <= 1:
-        return False
-    if num <= 3:
-        return True
-    if num % 2 == 0:
-        return False
-    for divisor in range(3, sqrt(num) + 1, 2):
-        if num % divisor == 0:
-            return False
-    return True
+def decompose(num: int) -> Iterator[int]:
+    """Decomposes a number into its prime factors."""
+    prime, primes = 2, get_primes()
+
+    while prime <= num:
+        prime = next(primes)
+
+        while num % prime == 0:
+            yield prime
+            num = num // prime
 
 def get_primes() -> Iterator[int]:
     """Generates the prime number sequence."""
@@ -33,10 +31,21 @@ def get_primes() -> Iterator[int]:
         else:
             for multiple in prime_multiples[num]:
                 prime_multiples.setdefault(multiple + num, []).append(multiple)
-                #print(f'multiple = {multiple}, prime_multiples = {prime_multiples}')
             del prime_multiples[num]
-        #print(f'num = {num}, prime_multiples = {D}')
         num += 2
+
+def is_prime(num: int) -> bool:
+    """Checks a number for primality."""
+    if num <= 1:
+        return False
+    if num <= 3:
+        return True
+    if num % 2 == 0:
+        return False
+    for divisor in range(3, sqrt(num) + 1, 2):
+        if num % divisor == 0:
+            return False
+    return True
 
 def nth(iterable: Iterator, n: int):
     """Returns the nth item of an iterator  or raise StopIteration."""
