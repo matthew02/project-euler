@@ -12,7 +12,7 @@ import sys
 
 
 from collections import Counter as counter
-from itertools import accumulate, count, takewhile
+from itertools import accumulate, count, dropwhile
 from math import prod
 from typing import Iterator
 
@@ -30,9 +30,8 @@ def triangle_numbers() -> Iterator:
 
 def euler12(num: int) -> int:
     """Calculates the first triangle number to have more than num divisors."""
-    for t in triangle_numbers():
-        if count_factors(t) > num:
-            return t
+    test_number = lambda n: count_factors(n) < num
+    return next(dropwhile(test_number, triangle_numbers()))
 
 def main(num: str):
     """Prints the solution."""
