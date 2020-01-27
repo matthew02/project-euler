@@ -31,18 +31,21 @@ def get_primes() -> Iterator[int]:
 
 def decompose(num: int) -> Iterator[int]:
     """Decomposes a number into its prime factors."""
-    prime, primes = 2, get_primes()
+    factors = []
 
+    prime, primes = 2, get_primes()
     while prime <= num:
         prime = next(primes)
 
         while num % prime == 0:
-            yield prime
-            num = num // prime
+            factors.append(prime)
+            num //= prime
+
+    return factors
 
 def largest_prime_factor(num: int) -> int:
     """Finds the largest prime factor of a given number."""
-    *_, largest = decompose(num)
+    largest = decompose(num)[-1]
     return largest
 
 def main(num: int):
