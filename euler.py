@@ -1,42 +1,44 @@
-# -*- coding: utf-8 -*-
-
 """A library of helper functions for solving the problems at ProjectEuler.net"""
 
-import math
-
-from functools import reduce
-from itertools import islice, takewhile
-from operator import mul, add
+from collections import Counter as counter
+from math import prod
+from itertools import islice
 from typing import Iterator, List
 
+
+_prime_number_cache = [2, 3]
+_prime_multiples = {}
+
+
+def count_factors(num: int) -> int:
+    """Calculates the total number of factors for a given integer."""
+    exponents = counter(decompose(num)).values()
+    return prod(e + 1 for e in exponents)
 
 def decompose(num: int) -> List[int]:
     """Decomposes a number into its prime factors."""
     factors = []
-
-    primes = get_primes()
-    while (prime:= next(primes)) <= num:
+    for prime in get_primes():
+        if prime > num: break
         while num % prime == 0:
             factors.append(prime)
             num //= prime
-
     return factors
 
-def get_primes(cache=[2]) -> Iterator[int]:
+def get_primes() -> Iterator[int]:
     """Generates the prime number sequence."""
-    yield from cache
-    prime_multiples = {}
-    num = 3
+    yield from _prime_number_cache
+    candidate = _prime_number_cache[-1]
     while True:
-        if num not in prime_multiples:
-            cache.append(num)
-            yield num
-            prime_multiples[num * num] = [2 * num]
+        if candidate not in _prime_multiples:
+            _prime_multiples[candidate * candidate] = [2 * candidate]
+            _prime_number_cache.append(candidate)
+            yield candidate
         else:
-            for multiple in prime_multiples[num]:
-                prime_multiples.setdefault(multiple + num, []).append(multiple)
-            del prime_multiples[num]
-        num += 2
+            for m in _prime_multiples[candidate]:
+                _prime_multiples.setdefault(m + candidate, []).append(m)
+            del _prime_multiples[candidate]
+        candidate += 2
 
 def is_prime(num: int) -> bool:
     """Checks a number for primality."""
@@ -54,18 +56,6 @@ def is_prime(num: int) -> bool:
 def nth(iterable: Iterator, n: int):
     """Returns the nth item of an iterator or raises StopIteration."""
     return next(islice(iterable, n - 1, None))
-
-def solve_quadratic(a: int, b: int, c: int) -> List[int]:
-    d = (b**2) - (4*a*c)
-    sol_1 = (-b-(0.5**d))/(2*a)
-    sol_2 = (-b+(0.5**d))/(2*a)
-    return (sol_1, sol_2)
-
-    #d = (b**2) - (4 * a * c)
-    #return [(-b - (0.5**d)) / (2 * a)
-    #        (-b + (0.5**d)) / (2 * a)]
-    #return [(-b - math.sqrt(d)) / (2 * a),
-    #        (-b + math.sqrt(d)) / (2 * a)]
 
 def sqrt(n: int) -> float:
     """Gets the integer square root of an integer rounded toward zero."""
