@@ -3,20 +3,26 @@
 from collections import Counter as counter
 from math import prod
 from itertools import islice
-from typing import Iterator, List
+from typing import Any, Dict, Iterator, List
 
 
-_prime_number_cache = [2, 3]
-_prime_multiples = {}
+_prime_number_cache: List[int] = [2, 3]
+_prime_multiples: Dict[int, List[int]] = {}
 
 
 def count_factors(num: int) -> int:
     """Calculates the total number of factors for a given integer."""
+    if not isinstance(num, int) or num < 1:
+        raise ValueError
+    if num == 1:
+        return 1
     exponents = counter(decompose(num)).values()
     return prod(e + 1 for e in exponents)
 
 def decompose(num: int) -> List[int]:
     """Decomposes a number into its prime factors."""
+    if not isinstance(num, int) or num < 2:
+        raise ValueError
     factors = []
     for prime in get_primes():
         if prime > num: break
@@ -42,6 +48,8 @@ def get_primes() -> Iterator[int]:
 
 def is_prime(num: int) -> bool:
     """Checks a number for primality."""
+    if not isinstance(num, int):
+        raise ValueError
     if num <= 1:
         return False
     if num <= 3:
@@ -53,11 +61,11 @@ def is_prime(num: int) -> bool:
             return False
     return True
 
-def nth(iterable: Iterator, n: int):
+def nth(iterable: Iterator[Any], n: int) -> Any:
     """Returns the nth item of an iterator or raises StopIteration."""
     return next(islice(iterable, n - 1, None))
 
-def sqrt(n: int) -> float:
+def sqrt(n: int) -> int:
     """Gets the integer square root of an integer rounded toward zero."""
     return int(n ** 0.5)
 
