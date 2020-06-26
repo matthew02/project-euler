@@ -10,13 +10,6 @@ Usage:
 
 import sys
 
-from collections import Counter as counter
-from math import prod
-from itertools import accumulate, dropwhile, count
-from typing import Iterator
-
-from euler import decompose, get_primes
-
 
 cache = {1: 0}
 
@@ -44,7 +37,6 @@ def main(num: str) -> None:
     """Prints the solution."""
     collatz = euler14(int(num))
     print(f'The longest Collatz sequence under {num} is {collatz[0]} with a length of {collatz[1]}')
-    #print(f'cache is {cache}')
 
 if __name__ == '__main__':
     main(sys.argv[1])
