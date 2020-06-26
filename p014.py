@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 14 from Project Euler: Longes Collatz Sequence
+"""Problem 14 from Project Euler: Longest Collatz Sequence
 
 Find the largest Collatz sequence under one million.
 
