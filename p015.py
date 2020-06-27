@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 14 from Project Euler: Lattice Paths
+"""Problem 15 from Project Euler: Lattice Paths
 
 Determine the number of NE routes in an n x n grid.
 
